@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGİS - Modern EBYS Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        .content {
+            transition: margin-left 0.3s ease-in-out;
+        }
+        /* Kaydırma çubuğu stilleri */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Kenar Çubuğu (Sidebar) -->
+    <aside id="sidebar" class="sidebar bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0">
+        <a href="anasayfa.html" class="text-white flex items-center space-x-2 px-4">
+            <i data-lucide="file-archive-2" class="w-8 h-8"></i>
+            <span class="text-2xl font-extrabold">MEGİS EBYS</span>
+        </a>
+
+        <nav>
+            <a href="anasayfa.html" class="flex items-center space-x-3 bg-gray-900 text-white py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="layout-dashboard"></i><span>Anasayfa</span></a>
+            <a href="izin-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="calendar-check"></i><span>İzin Yönetimi</span></a>
+            <a href="gelen-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="inbox"></i><span>Gelen Evrak</span></a>
+            <a href="giden-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="send"></i><span>Giden Evrak</span></a>
+            <a href="arsiv.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="archive"></i><span>Arşiv</span></a>
+            <a id="link-kullanici-yonetimi" href="kullanici-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="users"></i><span>Kullanıcı Yönetimi</span></a>
+            <a id="link-kurum-yonetimi" href="kurum-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="building-2"></i><span>Kurum Yönetimi</span></a>
+            <a id="link-ayarlar" href="ayarlar.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="settings"></i><span>Ayarlar</span></a>
+        </nav>
+
+        <div class="absolute bottom-5 left-0 right-0 px-4">
+             <div class="bg-gray-700 p-3 rounded-lg">
+                <div class="flex items-center space-x-3">
+                    <img src="https://placehold.co/40x40/667eea/ffffff?text=A" class="rounded-full" alt="Kullanıcı Avatarı">
+                    <div>
+                        <p class="font-semibold text-sm">Ali Yılmaz</p>
+                        <span class="text-xs text-gray-400">Admin</span>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </aside>
+
+    <!-- Ana İçerik -->
+    <div class="content flex-1 flex flex-col overflow-hidden">
+        <!-- Üst Bar -->
+        <header class="flex justify-between items-center p-4 bg-white border-b">
+            <div class="flex items-center">
+                <button id="menu-button" class="text-gray-500 focus:outline-none md:hidden">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <h1 class="text-2xl font-semibold text-gray-800 ml-4">Yönetim Paneli</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button id="notification-button" class="relative text-gray-500 hover:text-gray-700">
+                        <i data-lucide="bell"></i>
+                        <span id="notification-badge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </button>
+                    <div id="notification-dropdown" class="absolute right-0 mt-2 w-80 bg-white rounded-md shadow-lg z-20 hidden">
+                        <div class="p-4 font-bold border-b">Bildirimler</div>
+                        <div id="notification-list" class="py-1 max-h-80 overflow-y-auto">
+                            <!-- Bildirimler buraya yüklenecek -->
+                        </div>
+                    </div>
+                </div>
+                <button class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- İçerik Alanı -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-f0f2f5 p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Rapor Kartı 1: Gelen Evrak -->
+                <div class="bg-white p-6 rounded-xl shadow-md flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">Son 7 Günde Gelen Evrak</p>
+                        <p id="gelen-evrak-sayisi" class="text-3xl font-bold text-gray-800">...</p>
+                    </div>
+                    <div class="bg-blue-100 p-3 rounded-full">
+                        <i data-lucide="inbox" class="w-6 h-6 text-blue-500"></i>
+                    </div>
+                </div>
+
+                <!-- Rapor Kartı 2: Cevap Bekleyen -->
+                <div class="bg-white p-6 rounded-xl shadow-md flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">Cevap Bekleyen</p>
+                        <p id="cevap-bekleyen-sayisi" class="text-3xl font-bold text-gray-800">...</p>
+                    </div>
+                    <div class="bg-yellow-100 p-3 rounded-full">
+                        <i data-lucide="file-clock" class="w-6 h-6 text-yellow-500"></i>
+                    </div>
+                </div>
+
+                <!-- Rapor Kartı 3: Geciken Cevaplar -->
+                <div class="bg-white p-6 rounded-xl shadow-md flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">Geciken Cevaplar</p>
+                        <p id="geciken-cevap-sayisi" class="text-3xl font-bold text-red-500">...</p>
+                    </div>
+                    <div class="bg-red-100 p-3 rounded-full">
+                        <i data-lucide="alert-triangle" class="w-6 h-6 text-red-500"></i>
+                    </div>
+                </div>
+
+                <!-- Rapor Kartı 4: Tamamlanan -->
+                <div class="bg-white p-6 rounded-xl shadow-md flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">Bu Ay Cevaplanan</p>
+                        <p id="tamamlanan-sayisi" class="text-3xl font-bold text-gray-800">...</p>
+                    </div>
+                    <div class="bg-green-100 p-3 rounded-full">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+                <!-- Grafik: Birim Bazlı Evrak Yoğunluğu -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-4">Birim Bazlı Evrak Yoğunluğu</h3>
+                    <div class="relative h-[40rem]">
+                        <canvas id="evrakYogunluguChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Liste: Geciken Cevaplar -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-4">Geciken Evraklar</h3>
+                    <div id="geciken-listesi" class="space-y-4">
+                        <!-- Geciken evraklar buraya yüklenecek -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="auth.js"></script>
+    <script>
+        const API_BASE_URL = "https://localhost:7281"; // Port numarasını kendinize göre değiştirin!
+        let evrakChart = null; // Grafik nesnesini tutmak için
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            loadDashboardData();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            const menuButton = document.getElementById('menu-button');
+            const sidebar = document.getElementById('sidebar');
+            menuButton.addEventListener('click', () => sidebar.classList.toggle('-translate-x-full'));
+        }
+
+        async function loadDashboardData() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/Evraklar`);
+                if (!response.ok) throw new Error('Veriler yüklenemedi.');
+                const evraklar = await response.json();
+
+                updateStatsCards(evraklar);
+                updateGecikenListesi(evraklar);
+                updateBirimChart(evraklar);
+
+            } catch (error) {
+                console.error('Dashboard Veri Yükleme Hatası:', error);
+                alert('Dashboard verileri yüklenirken bir hata oluştu.');
+            }
+        }
+
+        function updateStatsCards(evraklar) {
+            const yediGunOnce = new Date();
+            yediGunOnce.setDate(yediGunOnce.getDate() - 7);
+            
+            const buAyBaslangic = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+
+            const son7GundeGelen = evraklar.filter(e => e.yonu === 0 && new Date(e.tarih) >= yediGunOnce).length;
+            const cevapBekleyen = evraklar.filter(e => e.durum === 0).length;
+            const geciken = evraklar.filter(e => e.durum === 3).length;
+            const buAyCevaplanan = evraklar.filter(e => e.durum === 2 && new Date(e.tarih) >= buAyBaslangic).length;
+
+            document.getElementById('gelen-evrak-sayisi').textContent = son7GundeGelen;
+            document.getElementById('cevap-bekleyen-sayisi').textContent = cevapBekleyen;
+            document.getElementById('geciken-cevap-sayisi').textContent = geciken;
+            document.getElementById('tamamlanan-sayisi').textContent = buAyCevaplanan;
+        }
+
+        function updateGecikenListesi(evraklar) {
+            const listeDiv = document.getElementById('geciken-listesi');
+            listeDiv.innerHTML = '';
+            const gecikenEvraklar = evraklar.filter(e => e.durum === 3);
+
+            if (gecikenEvraklar.length === 0) {
+                listeDiv.innerHTML = `<p class="text-sm text-gray-500">Gecikmiş evrak bulunmamaktadır.</p>`;
+                return;
+            }
+
+            gecikenEvraklar.slice(0, 5).forEach(evrak => { // Sadece ilk 5'i göster
+                const evrakDiv = document.createElement('div');
+                evrakDiv.className = 'flex items-start space-x-3';
+                evrakDiv.innerHTML = `
+                    <div class="bg-red-100 p-2 rounded-full"><i data-lucide="file-warning" class="w-5 h-5 text-red-500"></i></div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-800">${evrak.konu}</p>
+                        <p class="text-xs text-gray-500">${evrak.sorumluBirim ? evrak.sorumluBirim.ad : 'Birim Atanmamış'}</p>
+                    </div>
+                `;
+                listeDiv.appendChild(evrakDiv);
+            });
+            lucide.createIcons();
+        }
+
+        function updateBirimChart(evraklar) {
+            const birimCounts = {};
+            evraklar.forEach(evrak => {
+                if (evrak.sorumluBirim) {
+                    birimCounts[evrak.sorumluBirim.ad] = (birimCounts[evrak.sorumluBirim.ad] || 0) + 1;
+                }
+            });
+
+            const ctx = document.getElementById('evrakYogunluguChart').getContext('2d');
+            
+            if(evrakChart) {
+                evrakChart.destroy(); // Önceki grafiği temizle
+            }
+
+            evrakChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(birimCounts),
+                    datasets: [{
+                        label: 'Evrak Sayısı',
+                        data: Object.values(birimCounts),
+                        backgroundColor: 'rgba(59, 130, 246, 0.5)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGİS - Kurum Yönetimi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; }
+        .sidebar { transition: transform 0.3s ease-in-out; }
+        .content { transition: margin-left 0.3s ease-in-out; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+        .tab-active { border-color: #3b82f6; color: #3b82f6; background-color: #eff6ff; }
+        .modal-overlay { transition: opacity 0.3s ease-in-out; }
+        .modal-container { transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Kenar Çubuğu (Sidebar) -->
+    <aside id="sidebar" class="sidebar bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 z-30">
+        <a href="anasayfa.html" class="text-white flex items-center space-x-2 px-4">
+            <i data-lucide="file-archive-2" class="w-8 h-8"></i>
+            <span class="text-2xl font-extrabold">MEGİS EBYS</span>
+        </a>
+        <nav>
+            <a href="anasayfa.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="layout-dashboard"></i><span>Anasayfa</span></a>
+            <a href="gelen-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="inbox"></i><span>Gelen Evrak</span></a>
+            <a href="giden-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="send"></i><span>Giden Evrak</span></a>
+            <a href="arsiv.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="archive"></i><span>Arşiv</span></a>
+            <a id="link-kullanici-yonetimi" href="kullanici-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="users"></i><span>Kullanıcı Yönetimi</span></a>
+            <a id="link-kurum-yonetimi" href="kurum-yonetimi.html" class="flex items-center space-x-3 bg-gray-900 text-white py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="building-2"></i><span>Kurum Yönetimi</span></a>
+            <a href="izin-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="calendar-check"></i><span>İzin Yönetimi</span></a>
+           
+            <a id="link-ayarlar" href="ayarlar.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="settings"></i><span>Ayarlar</span></a>
+        </nav>
+    </aside>
+
+    <!-- Ana İçerik -->
+    <div class="content flex-1 flex flex-col overflow-hidden">
+        <header class="flex justify-between items-center p-4 bg-white border-b">
+            <div class="flex items-center">
+                <button id="menu-button" class="text-gray-500 focus:outline-none md:hidden"><i data-lucide="menu" class="w-6 h-6"></i></button>
+                <h1 class="text-2xl font-semibold text-gray-800 ml-4">Kurum ve Personel Yönetimi</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button id="notification-button" class="relative text-gray-500 hover:text-gray-700">
+                        <i data-lucide="bell"></i>
+                        <span id="notification-badge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </button>
+                    <div id="notification-dropdown" class="absolute right-0 mt-2 w-80 bg-white rounded-md shadow-lg z-20 hidden">
+                        <div class="p-4 font-bold border-b">Bildirimler</div>
+                        <div id="notification-list" class="py-1 max-h-80 overflow-y-auto">
+                            <!-- Bildirimler buraya yüklenecek -->
+                        </div>
+                    </div>
+                </div>
+                <button class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-f0f2f5 p-6">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <button class="tab-button tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="kurumlar">Kurum & Departman Yönetimi</button>
+                        <button class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="personeller">Personel Yönetimi</button>
+                    </nav>
+                </div>
+
+                <div class="pt-6">
+                    <!-- Kurum & Departman Yönetimi Sekmesi -->
+                    <div id="kurumlar" class="tab-content">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-700">Kayıtlı Kurumlar ve Departmanları</h3>
+                            <button id="yeniKurumBtn" class="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition"><i data-lucide="plus"></i><span>Yeni Kurum Ekle</span></button>
+                        </div>
+                        <div id="kurumListesi" class="space-y-4"></div>
+                    </div>
+
+                    <!-- Personel Yönetimi Sekmesi -->
+                    <div id="personeller" class="tab-content hidden">
+                         <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-700">Kayıtlı Personel</h3>
+                            <button id="yeniPersonelBtn" class="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition"><i data-lucide="user-plus"></i><span>Yeni Personel Ekle</span></button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-500">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3">Ad Soyad</th>
+                                        <th scope="col" class="px-6 py-3">Kurum / Departman</th>
+                                        <th scope="col" class="px-6 py-3">Ünvan</th>
+                                        <th scope="col" class="px-6 py-3 text-center">İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="personel-listesi-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Personel Ekleme/Düzenleme Modalı -->
+    <div id="personel-modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-40 hidden opacity-0">
+        <div class="modal-container bg-white rounded-xl shadow-2xl w-full max-w-lg transform -translate-y-10 opacity-0">
+            <div class="flex justify-between items-center p-5 border-b">
+                <h3 id="personel-modal-title" class="text-xl font-semibold text-gray-800">Yeni Personel Ekle</h3>
+                <button id="close-personel-modal-button" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <form id="personel-form">
+                <div class="p-6 space-y-4">
+                    <input type="hidden" id="personel-id">
+                    <div>
+                        <label for="personel-ad-soyad" class="block text-sm font-medium text-gray-700 mb-1">Ad Soyad</label>
+                        <input type="text" id="personel-ad-soyad" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="personel-kurum" class="block text-sm font-medium text-gray-700 mb-1">Kurum</label>
+                            <select id="personel-kurum" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" required></select>
+                        </div>
+                        <div>
+                            <label for="personel-departman" class="block text-sm font-medium text-gray-700 mb-1">Departman</label>
+                            <select id="personel-departman" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" required></select>
+                        </div>
+                    </div>
+                     <div>
+                        <label for="personel-unvan" class="block text-sm font-medium text-gray-700 mb-1">Ünvan</label>
+                        <input type="text" id="personel-unvan" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                <div class="flex justify-end items-center p-5 border-t bg-gray-50 rounded-b-xl">
+                    <button type="button" id="cancel-personel-button" class="bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition duration-200 mr-2">Vazgeç</button>
+                    <button type="submit" class="bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-200">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="auth.js"></script>
+    <script>
+        const API_BASE_URL = "https://localhost:7281";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            setupTabs();
+            loadKurumlarVeDepartmanlar();
+            loadDisKullanicilar();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('menu-button').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('-translate-x-full'));
+            document.getElementById('yeniKurumBtn').addEventListener('click', () => editKurum(null));
+            document.getElementById('yeniPersonelBtn').addEventListener('click', () => openPersonelModal(null));
+            
+            const personelModal = document.getElementById('personel-modal');
+            const personelModalContainer = personelModal.querySelector('.modal-container');
+            document.getElementById('close-personel-modal-button').addEventListener('click', () => closeModal(personelModal, personelModalContainer));
+            document.getElementById('cancel-personel-button').addEventListener('click', () => closeModal(personelModal, personelModalContainer));
+            document.getElementById('personel-form').addEventListener('submit', handlePersonelFormSubmit);
+            document.getElementById('personel-kurum').addEventListener('change', (e) => populateDepartmanlarDropdown(e.target.value));
+        }
+        
+        function setupTabs() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('tab-active'));
+                    button.classList.add('tab-active');
+                    const targetTab = button.dataset.tab;
+                    tabContents.forEach(content => content.classList.toggle('hidden', content.id !== targetTab));
+                });
+            });
+        }
+
+        async function loadKurumlarVeDepartmanlar() {
+            try {
+                const [kurumlarRes, departmanlarRes] = await Promise.all([
+                    fetch(`${API_BASE_URL}/api/Kurumlar`),
+                    fetch(`${API_BASE_URL}/api/DisDepartmanlar`)
+                ]);
+                if (!kurumlarRes.ok || !departmanlarRes.ok) throw new Error('Veriler yüklenemedi.');
+                const kurumlar = await kurumlarRes.json();
+                const departmanlar = await departmanlarRes.json();
+
+                const kurumListesiDiv = document.getElementById('kurumListesi');
+                kurumListesiDiv.innerHTML = '';
+                if (kurumlar.length === 0) {
+                    kurumListesiDiv.innerHTML = `<p class="text-gray-500">Kayıtlı kurum bulunmamaktadır.</p>`;
+                    return;
+                }
+
+                kurumlar.forEach(kurum => {
+                    const kurumDepartmanlari = departmanlar.filter(d => d.kurumId === kurum.id);
+                    const kurumHtml = `
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-lg text-gray-800">${kurum.ad}</h4>
+                                <div class="space-x-2">
+                                    <button onclick="editKurum(${kurum.id}, '${kurum.ad}')" class="text-gray-500 hover:text-blue-600 p-1"><i data-lucide="edit"></i></button>
+                                    <button onclick="deleteKurum(${kurum.id})" class="text-gray-500 hover:text-red-600 p-1"><i data-lucide="trash-2"></i></button>
+                                    <button onclick="editDepartman(null, ${kurum.id})" class="bg-blue-100 text-blue-700 px-2 py-1 text-xs font-semibold rounded hover:bg-blue-200">Departman Ekle</button>
+                                </div>
+                            </div>
+                            <ul class="mt-3 space-y-2 pl-4">
+                                ${kurumDepartmanlari.map(d => `
+                                    <li class="flex justify-between items-center text-sm">
+                                        <span>${d.ad}</span>
+                                        <div class="space-x-2">
+                                            <button onclick="editDepartman(${d.id}, ${d.kurumId},'${d.ad}')" class="text-gray-400 hover:text-blue-600 p-1"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                                            <button onclick="deleteDepartman(${d.id})" class="text-gray-400 hover:text-red-600 p-1"><i data-lucide="x" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </li>
+                                `).join('') || '<li class="text-sm text-gray-400">Bu kuruma ait departman bulunmamaktadır.</li>'}
+                            </ul>
+                        </div>`;
+                    kurumListesiDiv.innerHTML += kurumHtml;
+                });
+                lucide.createIcons();
+            } catch (error) {
+                console.error('Kurum/Departman Yükleme Hatası:', error);
+                alert('Kurum ve departmanlar yüklenirken bir hata oluştu.');
+            }
+        }
+
+        async function editKurum(id, mevcutAd = '') {
+            const yeniAd = prompt(id ? "Kurum adını düzenle:" : "Yeni kurum adını giriniz:", mevcutAd);
+            if (yeniAd && yeniAd.trim() && yeniAd.trim() !== mevcutAd) {
+                const url = id ? `${API_BASE_URL}/api/Kurumlar/${id}` : `${API_BASE_URL}/api/Kurumlar`;
+                const method = id ? 'PUT' : 'POST';
+                const body = { ad: yeniAd.trim() };
+                if (id) body.id = id;
+                try {
+                    const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+                    if (!res.ok) throw new Error('İşlem başarısız.');
+                    loadKurumlarVeDepartmanlar();
+                } catch (e) { alert(`Hata: ${e.message}`); }
+            }
+        }
+
+        async function deleteKurum(id) {
+            if (confirm("Bu kurumu silmek istediğinizden emin misiniz?")) {
+                try {
+                    const res = await fetch(`${API_BASE_URL}/api/Kurumlar/${id}`, { method: 'DELETE' });
+                    if (!res.ok) throw new Error('Kurum silinemedi.');
+                    loadKurumlarVeDepartmanlar();
+                    loadDisKullanicilar();
+                } catch (e) { alert(`Hata: ${e.message}`); }
+            }
+        }
+
+        async function editDepartman(id, kurumId, mevcutAd = '') {
+            const yeniAd = prompt(id ? "Departman adını düzenle:" : "Yeni departman adını giriniz:", mevcutAd);
+            if (yeniAd && yeniAd.trim() && yeniAd.trim() !== mevcutAd) {
+                const url = id ? `${API_BASE_URL}/api/DisDepartmanlar/${id}` : `${API_BASE_URL}/api/DisDepartmanlar`;
+                const method = id ? 'PUT' : 'POST';
+                const body = { ad: yeniAd.trim(), kurumId: kurumId };
+                if (id) body.id = id;
+                try {
+                    const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+                    if (!res.ok) throw new Error('İşlem başarısız.');
+                    loadKurumlarVeDepartmanlar();
+                } catch (e) { alert(`Hata: ${e.message}`); }
+            }
+        }
+        
+        async function deleteDepartman(id) {
+            if (confirm("Bu departmanı silmek istediğinizden emin misiniz?")) {
+                 try {
+                    const res = await fetch(`${API_BASE_URL}/api/DisDepartmanlar/${id}`, { method: 'DELETE' });
+                    if (!res.ok) throw new Error('Departman silinemedi.');
+                    loadKurumlarVeDepartmanlar();
+                    loadDisKullanicilar();
+                } catch (e) { alert(`Hata: ${e.message}`); }
+            }
+        }
+
+        async function loadDisKullanicilar() {
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/DisKullanicilar`);
+                if (!res.ok) throw new Error('Personel yüklenemedi.');
+                const personeller = await res.json();
+                const tableBody = document.getElementById('personel-listesi-body');
+                tableBody.innerHTML = '';
+                personeller.forEach(p => {
+                    const row = tableBody.insertRow();
+                    row.className = 'bg-white border-b hover:bg-gray-50';
+                    row.innerHTML = `
+                        <td class="px-6 py-4 font-medium text-gray-900">${p.adSoyad}</td>
+                        <td class="px-6 py-4">${p.disDepartman.kurum.ad} / ${p.disDepartman.ad}</td>
+                        <td class="px-6 py-4">${p.unvan || '-'}</td>
+                        <td class="px-6 py-4 text-center space-x-2">
+                            <button onclick="openPersonelModal(${p.id})" class="text-gray-500 hover:text-blue-600 p-1"><i data-lucide="edit"></i></button>
+                            <button onclick="deleteDisKullanici(${p.id})" class="text-gray-500 hover:text-red-600 p-1"><i data-lucide="trash-2"></i></button>
+                        </td>`;
+                });
+                lucide.createIcons();
+            } catch (e) {
+                console.error('Personel Yükleme Hatası:', e);
+                alert('Personel listesi yüklenirken bir hata oluştu.');
+            }
+        }
+
+        async function openPersonelModal(id = null) {
+            const modal = document.getElementById('personel-modal');
+            const modalContainer = modal.querySelector('.modal-container');
+            const form = document.getElementById('personel-form');
+            form.reset();
+            document.getElementById('personel-id').value = '';
+            try {
+                await populateKurumlarDropdown();
+                if (id) {
+                    document.getElementById('personel-modal-title').textContent = 'Personeli Düzenle';
+                    const res = await fetch(`${API_BASE_URL}/api/DisKullanicilar/${id}`);
+                    if (!res.ok) throw new Error('Personel bilgisi alınamadı.');
+                    const p = await res.json();
+                    document.getElementById('personel-id').value = p.id;
+                    document.getElementById('personel-ad-soyad').value = p.adSoyad;
+                    document.getElementById('personel-unvan').value = p.unvan;
+                    document.getElementById('personel-kurum').value = p.disDepartman.kurumId;
+                    await populateDepartmanlarDropdown(p.disDepartman.kurumId, p.disDepartmanId);
+                } else {
+                    document.getElementById('personel-modal-title').textContent = 'Yeni Personel Ekle';
+                    await populateDepartmanlarDropdown(document.getElementById('personel-kurum').value);
+                }
+                openModal(modal, modalContainer);
+            } catch (e) { alert(`Form açılırken bir hata oluştu: ${e.message}`); }
+        }
+
+        async function handlePersonelFormSubmit(event) {
+            event.preventDefault();
+            const departmanId = document.getElementById('personel-departman').value;
+            if (!departmanId) { alert("Lütfen bir departman seçiniz."); return; }
+
+            const id = document.getElementById('personel-id').value;
+            const personelData = {
+                adSoyad: document.getElementById('personel-ad-soyad').value,
+                unvan: document.getElementById('personel-unvan').value,
+                disDepartmanId: parseInt(departmanId)
+            };
+            const url = id ? `${API_BASE_URL}/api/DisKullanicilar/${id}` : `${API_BASE_URL}/api/DisKullanicilar`;
+            const method = id ? 'PUT' : 'POST';
+            if (id) personelData.id = parseInt(id);
+
+            try {
+                const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(personelData) });
+                if (!res.ok) throw new Error('Personel kaydedilemedi.');
+                loadDisKullanicilar();
+                closeModal(document.getElementById('personel-modal'), document.querySelector('#personel-modal .modal-container'));
+            } catch (e) { alert(`Hata: ${e.message}`); }
+        }
+
+        async function deleteDisKullanici(id) {
+            if (confirm("Bu personeli silmek istediğinizden emin misiniz?")) {
+                try {
+                    const res = await fetch(`${API_BASE_URL}/api/DisKullanicilar/${id}`, { method: 'DELETE' });
+                    if (!res.ok) throw new Error('Personel silinemedi.');
+                    loadDisKullanicilar();
+                } catch (e) { alert(`Hata: ${e.message}`); }
+            }
+        }
+
+        async function populateKurumlarDropdown() {
+            const select = document.getElementById('personel-kurum');
+            select.innerHTML = '<option value="">Kurum Seçiniz</option>';
+            const res = await fetch(`${API_BASE_URL}/api/Kurumlar`);
+            if (!res.ok) throw new Error('Kurumlar yüklenemedi.');
+            const kurumlar = await res.json();
+            kurumlar.forEach(k => select.innerHTML += `<option value="${k.id}">${k.ad}</option>`);
+        }
+
+        async function populateDepartmanlarDropdown(kurumId, selectedDepartmanId = null) {
+            const select = document.getElementById('personel-departman');
+            select.innerHTML = '<option value="">Departman Seçiniz</option>';
+            if (!kurumId) return;
+            const res = await fetch(`${API_BASE_URL}/api/DisDepartmanlar/kurum/${kurumId}`);
+            if (!res.ok) throw new Error('Departmanlar yüklenemedi.');
+            const departmanlar = await res.json();
+            departmanlar.forEach(d => {
+                const option = document.createElement('option');
+                option.value = d.id;
+                option.textContent = d.ad;
+                if (d.id === selectedDepartmanId) option.selected = true;
+                select.appendChild(option);
+            });
+        }
+
+        function openModal(modal, container) {
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('opacity-0', '-translate-y-10');
+            }, 10);
+        }
+
+        function closeModal(modal, container) {
+            container.classList.add('opacity-0', '-translate-y-10');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+    </script>
+</body>
+</html>

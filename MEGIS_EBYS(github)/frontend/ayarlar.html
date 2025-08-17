@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGİS - Ayarlar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        .content {
+            transition: margin-left 0.3s ease-in-out;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .tab-active {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            background-color: #eff6ff;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Kenar Çubuğu (Sidebar) -->
+    <aside id="sidebar" class="sidebar bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 z-30">
+        <a href="anasayfa.html" class="text-white flex items-center space-x-2 px-4">
+            <i data-lucide="file-archive-2" class="w-8 h-8"></i>
+            <span class="text-2xl font-extrabold">MEGİS EBYS</span>
+        </a>
+        <nav>
+            <a href="anasayfa.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="layout-dashboard"></i><span>Anasayfa</span></a>
+            <a href="izin-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="calendar-check"></i><span>İzin Yönetimi</span></a>
+            <a href="gelen-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="inbox"></i><span>Gelen Evrak</span></a>
+            <a href="giden-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="send"></i><span>Giden Evrak</span></a>
+            <a href="arsiv.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="archive"></i><span>Arşiv</span></a>
+            <a id="link-kullanici-yonetimi" href="kullanici-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="users"></i><span>Kullanıcı Yönetimi</span></a>
+            <a id="link-kurum-yonetimi" href="kurum-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="building-2"></i><span>Kurum Yönetimi</span></a>
+            <a id="link-ayarlar" href="ayarlar.html" class="flex items-center space-x-3 bg-gray-900 text-white py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="settings"></i><span>Ayarlar</span></a>
+        </nav>
+    </aside>
+
+    <!-- Ana İçerik -->
+    <div class="content flex-1 flex flex-col overflow-hidden">
+        <header class="flex justify-between items-center p-4 bg-white border-b">
+            <div class="flex items-center">
+                <button id="menu-button" class="text-gray-500 focus:outline-none md:hidden"><i data-lucide="menu" class="w-6 h-6"></i></button>
+                <h1 class="text-2xl font-semibold text-gray-800 ml-4">Sistem Ayarları</h1>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-f0f2f5 p-6">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <!-- Sekme Başlıkları -->
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <button class="tab-button tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="birimler">Dahili Birim Yönetimi</button>
+                        <button class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="evrak-turleri">Evrak Türleri</button>
+                        <button class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="sablonlar">Şablon Yönetimi</button>
+                    </nav>
+                </div>
+
+                <!-- Sekme İçerikleri -->
+                <div class="pt-6">
+                    <!-- Birim Yönetimi Sekmesi -->
+                    <div id="birimler" class="tab-content">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-700">Kayıtlı Dahili Birimler</h3>
+                            <button id="yeniBirimBtn" class="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition"><i data-lucide="plus"></i><span>Yeni Birim Ekle</span></button>
+                        </div>
+                        <ul id="birimListesi" class="space-y-2"></ul>
+                    </div>
+
+                    <!-- Evrak Türleri Sekmesi -->
+                    <div id="evrak-turleri" class="tab-content hidden">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-700">Tanımlı Evrak Türleri</h3>
+                            <button id="yeniEvrakTuruBtn" class="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition"><i data-lucide="plus"></i><span>Yeni Tür Ekle</span></button>
+                        </div>
+                        <ul id="evrakTuruListesi" class="space-y-2"></ul>
+                    </div>
+
+                    <!-- Şablon Yönetimi Sekmesi -->
+                    <div id="sablonlar" class="tab-content hidden">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div class="lg:col-span-1">
+                                <form id="sablon-form" class="bg-gray-50 p-4 rounded-lg border space-y-4">
+                                    <h3 class="text-lg font-semibold text-gray-700">Yeni Şablon Yükle</h3>
+                                    <div>
+                                        <label for="sablon-adi" class="block text-sm font-medium text-gray-700 mb-1">Şablon Adı</label>
+                                        <input type="text" id="sablon-adi" class="w-full border-gray-300 rounded-lg shadow-sm" required>
+                                    </div>
+                                    <div>
+                                        <label for="sablon-dosya" class="block text-sm font-medium text-gray-700 mb-1">Şablon Dosyası (.docx)</label>
+                                        <input type="file" id="sablon-dosya" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" accept=".docx" required>
+                                    </div>
+                                    <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition">Yükle</button>
+                                </form>
+                            </div>
+                            <div class="lg:col-span-2">
+                                <h3 class="text-lg font-semibold text-gray-700 mb-4">Kayıtlı Şablonlar</h3>
+                                <ul id="sablon-listesi" class="space-y-2"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        const API_BASE_URL = "https://localhost:7281";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            setupTabs();
+            loadBirimler();
+            loadEvrakTurleri(); 
+            loadSablonlar();
+            setupEventListeners();
+        });
+
+        function setupTabs() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('tab-active'));
+                    button.classList.add('tab-active');
+                    const targetTab = button.dataset.tab;
+                    tabContents.forEach(content => content.classList.toggle('hidden', content.id !== targetTab));
+                });
+            });
+        }
+
+        function setupEventListeners() {
+            document.getElementById('menu-button').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('-translate-x-full'));
+            document.getElementById('yeniBirimBtn').addEventListener('click', () => {
+                const birimAdi = prompt("Yeni birim adını giriniz:");
+                if (birimAdi && birimAdi.trim() !== '') addBirim(birimAdi.trim());
+            });
+            document.getElementById('yeniEvrakTuruBtn').addEventListener('click', () => {
+                const turAdi = prompt("Yeni evrak türü adını giriniz:");
+                if (turAdi && turAdi.trim() !== '') addEvrakTuru(turAdi.trim());
+            });
+            document.getElementById('sablon-form').addEventListener('submit', handleSablonUpload);
+        }
+
+        // --- Birim Fonksiyonları ---
+        async function loadBirimler() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/Birimler`);
+                if (!response.ok) throw new Error('Birimler yüklenemedi.');
+                const birimler = await response.json();
+                const birimListesi = document.getElementById('birimListesi');
+                birimListesi.innerHTML = '';
+                birimler.forEach(birim => {
+                    const li = document.createElement('li');
+                    li.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-lg';
+                    li.innerHTML = `
+                        <span class="font-medium">${birim.ad}</span>
+                        <div class="space-x-2">
+                            <button onclick="editBirim(${birim.id}, '${birim.ad}')" class="text-gray-500 hover:text-blue-600 p-1"><i data-lucide="edit"></i></button>
+                            <button onclick="deleteBirim(${birim.id})" class="text-gray-500 hover:text-red-600 p-1"><i data-lucide="trash-2"></i></button>
+                        </div>`;
+                    birimListesi.appendChild(li);
+                });
+                lucide.createIcons();
+            } catch (error) {
+                console.error('Birim Yükleme Hatası:', error);
+                alert('Birimler yüklenirken bir hata oluştu.');
+            }
+        }
+        async function addBirim(ad) { 
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/Birimler`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ad: ad }),
+                });
+                if (!response.ok) throw new Error('Birim eklenemedi.');
+                loadBirimler();
+            } catch (error) {
+                console.error('Birim Ekleme Hatası:', error);
+                alert('Birim eklenirken bir hata oluştu.');
+            }
+         }
+        async function editBirim(id, mevcutAd) { 
+            const yeniAd = prompt("Birim adını düzenle:", mevcutAd);
+            if (yeniAd && yeniAd.trim() !== '' && yeniAd.trim() !== mevcutAd) {
+                 try {
+                    const response = await fetch(`${API_BASE_URL}/api/Birimler/${id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: id, ad: yeniAd.trim() }),
+                    });
+                    if (!response.ok) throw new Error('Birim güncellenemedi.');
+                    loadBirimler();
+                } catch (error) {
+                    console.error('Birim Güncelleme Hatası:', error);
+                    alert('Birim güncellenirken bir hata oluştu.');
+                }
+            }
+         }
+        async function deleteBirim(id) { 
+            if (confirm("Bu birimi silmek istediğinizden emin misiniz?")) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/Birimler/${id}`, { method: 'DELETE' });
+                     if (!response.ok) throw new Error('Birim silinemedi.');
+                    loadBirimler();
+                } catch (error) {
+                    console.error('Birim Silme Hatası:', error);
+                    alert('Birim silinirken bir hata oluştu.');
+                }
+            }
+         }
+
+        // --- Evrak Türü Fonksiyonları ---
+        async function loadEvrakTurleri() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/EvrakTurleri`);
+                if (!response.ok) throw new Error('Evrak türleri yüklenemedi.');
+                const turler = await response.json();
+                const evrakTuruListesi = document.getElementById('evrakTuruListesi');
+                evrakTuruListesi.innerHTML = '';
+                turler.forEach(tur => {
+                    const li = document.createElement('li');
+                    li.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-lg';
+                    li.innerHTML = `
+                        <span class="font-medium">${tur.ad}</span>
+                        <div class="space-x-2">
+                            <button onclick="editEvrakTuru(${tur.id}, '${tur.ad}')" class="text-gray-500 hover:text-blue-600 p-1"><i data-lucide="edit"></i></button>
+                            <button onclick="deleteEvrakTuru(${tur.id})" class="text-gray-500 hover:text-red-600 p-1"><i data-lucide="trash-2"></i></button>
+                        </div>`;
+                    evrakTuruListesi.appendChild(li);
+                });
+                lucide.createIcons();
+            } catch (error) {
+                console.error('Evrak Türü Yükleme Hatası:', error);
+                alert('Evrak türleri yüklenirken bir hata oluştu.');
+            }
+        }
+        async function addEvrakTuru(ad) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/EvrakTurleri`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ad: ad }),
+                });
+                if (!response.ok) throw new Error('Evrak türü eklenemedi.');
+                loadEvrakTurleri();
+            } catch (error) {
+                console.error('Evrak Türü Ekleme Hatası:', error);
+                alert('Evrak türü eklenirken bir hata oluştu.');
+            }
+        }
+        async function editEvrakTuru(id, mevcutAd) {
+            const yeniAd = prompt("Evrak türü adını düzenle:", mevcutAd);
+            if (yeniAd && yeniAd.trim() !== '' && yeniAd.trim() !== mevcutAd) {
+                 try {
+                    const response = await fetch(`${API_BASE_URL}/api/EvrakTurleri/${id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: id, ad: yeniAd.trim() }),
+                    });
+                    if (!response.ok) throw new Error('Evrak türü güncellenemedi.');
+                    loadEvrakTurleri();
+                } catch (error) {
+                    console.error('Evrak Türü Güncelleme Hatası:', error);
+                    alert('Evrak türü güncellenirken bir hata oluştu.');
+                }
+            }
+        }
+        async function deleteEvrakTuru(id) {
+            if (confirm("Bu evrak türünü silmek istediğinizden emin misiniz?")) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/EvrakTurleri/${id}`, { method: 'DELETE' });
+                     if (!response.ok) throw new Error('Evrak türü silinemedi.');
+                    loadEvrakTurleri();
+                } catch (error) {
+                    console.error('Evrak Türü Silme Hatası:', error);
+                    alert('Evrak türü silinirken bir hata oluştu.');
+                }
+            }
+        }
+
+        // --- Şablon Fonksiyonları ---
+        async function loadSablonlar() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/Sablonlar`);
+                if (!response.ok) throw new Error('Şablonlar yüklenemedi.');
+                const sablonlar = await response.json();
+                const liste = document.getElementById('sablon-listesi');
+                liste.innerHTML = '';
+
+                if (sablonlar.length === 0) {
+                    liste.innerHTML = `<p class="text-gray-500">Kayıtlı şablon bulunmamaktadır.</p>`;
+                    return;
+                }
+
+                sablonlar.forEach(sablon => {
+                    const li = document.createElement('li');
+                    li.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-lg';
+                    li.innerHTML = `
+                        <span class="font-medium flex items-center gap-2"><i data-lucide="file-word" class="w-5 h-5 text-blue-600"></i>${sablon.ad}</span>
+                        <div class="space-x-2">
+                            <a href="${API_BASE_URL}/api/Sablonlar/download/${sablon.id}" class="text-gray-500 hover:text-green-600 p-1" title="İndir"><i data-lucide="download"></i></a>
+                            <button onclick="deleteSablon(${sablon.id})" class="text-gray-500 hover:text-red-600 p-1" title="Sil"><i data-lucide="trash-2"></i></button>
+                        </div>
+                    `;
+                    liste.appendChild(li);
+                });
+                lucide.createIcons();
+            } catch (error) {
+                alert(`Hata: ${error.message}`);
+            }
+        }
+
+        async function handleSablonUpload(event) {
+            event.preventDefault();
+            const adInput = document.getElementById('sablon-adi');
+            const fileInput = document.getElementById('sablon-dosya');
+            
+            if (fileInput.files.length === 0) {
+                alert("Lütfen bir dosya seçin.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('ad', adInput.value);
+            formData.append('file', fileInput.files[0]);
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/Sablonlar/upload`, {
+                    method: 'POST',
+                    body: formData,
+                });
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Şablon yüklenemedi: ${errorText}`);
+                }
+                alert("Şablon başarıyla yüklendi!");
+                adInput.value = '';
+                fileInput.value = '';
+                loadSablonlar();
+            } catch (error) {
+                alert(`Hata: ${error.message}`);
+            }
+        }
+
+        async function deleteSablon(id) {
+            if (confirm("Bu şablonu silmek istediğinizden emin misiniz?")) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/Sablonlar/${id}`, { method: 'DELETE' });
+                    if (!response.ok) throw new Error('Şablon silinemedi.');
+                    loadSablonlar();
+                } catch (error) {
+                    alert(`Hata: ${error.message}`);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

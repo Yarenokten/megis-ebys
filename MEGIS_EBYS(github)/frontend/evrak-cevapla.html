@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGİS - Evrak Cevapla</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; }
+        .sidebar { transition: transform 0.3s ease-in-out; }
+        .content { transition: margin-left 0.3s ease-in-out; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Kenar Çubuğu (Sidebar) -->
+    <aside id="sidebar" class="sidebar bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 z-30">
+        <a href="anasayfa.html" class="text-white flex items-center space-x-2 px-4">
+            <i data-lucide="file-archive-2" class="w-8 h-8"></i>
+            <span class="text-2xl font-extrabold">MEGİS EBYS</span>
+        </a>
+        <nav>
+            <a href="anasayfa.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="layout-dashboard"></i><span>Anasayfa</span></a>
+            <a href="izin-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="calendar-check"></i><span>İzin Yönetimi</span></a>
+            <a href="gelen-evrak.html" class="flex items-center space-x-3 bg-gray-900 text-white py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="inbox"></i><span>Gelen Evrak</span></a>
+            <a href="giden-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="send"></i><span>Giden Evrak</span></a>
+            <a href="arsiv.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="archive"></i><span>Arşiv</span></a>
+            <a id="link-kullanici-yonetimi" href="kullanici-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="users"></i><span>Kullanıcı Yönetimi</span></a>
+            <a id="link-kurum-yonetimi" href="kurum-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="building-2"></i><span>Kurum Yönetimi</span></a>
+            <a id="link-ayarlar" href="ayarlar.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="settings"></i><span>Ayarlar</span></a>
+        </nav>
+    </aside>
+
+    <!-- Ana İçerik -->
+    <div class="content flex-1 flex flex-col overflow-hidden">
+        <header class="flex justify-between items-center p-4 bg-white border-b">
+            <div class="flex items-center">
+                <button id="menu-button" class="text-gray-500 focus:outline-none md:hidden"><i data-lucide="menu" class="w-6 h-6"></i></button>
+                <div class="flex items-center">
+                     <a id="geri-link" href="#" class="text-gray-500 hover:text-blue-600"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+                     <h1 class="text-2xl font-semibold text-gray-800 ml-4">Evrak Cevapla</h1>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-f0f2f5 p-6">
+            <form id="cevap-form" class="bg-white p-6 rounded-xl shadow-md">
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-500">Alıcı Personel</label>
+                            <p id="alici-personel" class="mt-1 text-base font-semibold text-gray-800"></p>
+                        </div>
+                         <div>
+                            <label for="cevap-konu" class="block text-sm font-medium text-gray-700">Konu</label>
+                            <input type="text" id="cevap-konu" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="ai-prompt" class="block text-sm font-medium text-gray-700 mb-1">Yapay Zeka Komutu</label>
+                        <div class="flex items-center gap-2">
+                            <input type="text" id="ai-prompt" placeholder="Örn: İlgili talebiniz onaylanmıştır" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            <button type="button" id="yapay-zeka-btn" class="flex-shrink-0 flex items-center gap-2 bg-purple-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+                                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                                <span class="hidden md:inline">Oluştur</span>
+                            </button>
+                            <div id="loading-spinner" class="loader hidden"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="cevap-icerik" class="block text-sm font-medium text-gray-700">Cevap Metni</label>
+                        <textarea id="cevap-icerik" name="konu" rows="8" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" required></textarea>
+                    </div>
+                    
+                    <div class="pt-4">
+                        <blockquote id="alinti-mesaj" class="p-4 border-l-4 border-gray-300 bg-gray-50 text-sm text-gray-600">
+                            <!-- Orijinal evrak bilgileri buraya gelecek -->
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="flex justify-end items-center pt-6 mt-6 border-t">
+                    <button type="submit" class="bg-green-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-green-700 transition duration-200">Cevabı Gönder</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        const API_BASE_URL = "https://localhost:7281";
+        let originalEvrak = null;
+        const currentUser = JSON.parse(localStorage.getItem('kullanici'));
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            loadOriginalEvrak();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('menu-button').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('-translate-x-full'));
+            document.getElementById('cevap-form').addEventListener('submit', handleCevapSubmit);
+            document.getElementById('yapay-zeka-btn').addEventListener('click', handleAIRequest);
+        }
+
+        async function loadOriginalEvrak() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const evrakId = params.get('id');
+                if (!evrakId) throw new Error('Cevaplanacak evrak ID bulunamadı.');
+
+                const response = await fetch(`${API_BASE_URL}/api/Evraklar/${evrakId}`);
+                if (!response.ok) throw new Error('Orijinal evrak yüklenemedi.');
+                
+                originalEvrak = await response.json();
+
+                const aliciAdi = originalEvrak.gonderenKullanici ? originalEvrak.gonderenKullanici.adSoyad : 'Bilinmeyen Kullanıcı';
+                document.getElementById('alici-personel').textContent = aliciAdi;
+                document.getElementById('cevap-konu').value = `Re: ${originalEvrak.konu}`;
+                document.getElementById('geri-link').href = `evrak-detay.html?id=${originalEvrak.id}`;
+                
+                const alintiMesaj = document.getElementById('alinti-mesaj');
+                const tarih = new Date(originalEvrak.tarih).toLocaleString('tr-TR');
+                alintiMesaj.innerHTML = `
+                    <p><strong>Gönderen:</strong> ${aliciAdi}</p>
+                    <p><strong>Tarih:</strong> ${tarih}</p>
+                    <p><strong>Konu:</strong> ${originalEvrak.konu}</p>
+                    <br>
+                    <p>${originalEvrak.konu}</p> 
+                `;
+
+            } catch (error) {
+                console.error('Orijinal Evrak Yükleme Hatası:', error);
+                alert(`Hata: ${error.message}`);
+                window.history.back();
+            }
+        }
+
+        async function handleCevapSubmit(event) {
+            event.preventDefault();
+            if (!originalEvrak || !currentUser) {
+                alert("Cevap gönderilemedi, kullanıcı veya orijinal evrak bilgisi eksik.");
+                return;
+            }
+
+            const yeniEvrakData = {
+                yonu: 1,
+                durum: 6,
+                dahiliMi: true,
+                gonderenKullaniciId: currentUser.id,
+                aliciKullaniciId: originalEvrak.gonderenKullaniciId,
+                konu: document.getElementById('cevap-icerik').value,
+                tarih: new Date().toISOString(),
+                evrakTuruId: originalEvrak.evrakTuruId,
+            };
+
+            try {
+                const createResponse = await fetch(`${API_BASE_URL}/api/Evraklar`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(yeniEvrakData)
+                });
+
+                if (!createResponse.ok) throw new Error('Cevap evrakı oluşturulamadı.');
+
+                const updatedOriginalEvrak = { ...originalEvrak, durum: 2 };
+
+                const updateResponse = await fetch(`${API_BASE_URL}/api/Evraklar/${originalEvrak.id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedOriginalEvrak)
+                });
+
+                if (!updateResponse.ok) throw new Error('Orijinal evrak durumu güncellenemedi.');
+
+                alert("Evrak başarıyla cevaplandı!");
+                window.location.href = `giden-evrak.html`;
+
+            } catch (error) {
+                console.error("Cevap Yazma Hatası:", error);
+                alert(`Evrak cevaplanırken bir hata oluştu: ${error.message}`);
+            }
+        }
+
+        async function handleAIRequest() {
+            const cevapTextarea = document.getElementById('cevap-icerik');
+            const promptInput = document.getElementById('ai-prompt');
+            const promptText = promptInput.value;
+            const alinti = document.getElementById('alinti-mesaj').innerText;
+            const aiButton = document.getElementById('yapay-zeka-btn');
+            const spinner = document.getElementById('loading-spinner');
+
+            if (!promptText.trim()) {
+                alert("Lütfen yapay zekaya bir komut girin.");
+                return;
+            }
+
+            aiButton.disabled = true;
+            spinner.classList.remove('hidden');
+            aiButton.classList.add('hidden');
+
+            try {
+                const fullPrompt = `Sen bir devlet memurusun. Sana verilen bir resmi yazıyı ve bu yazıya verilecek cevabın anahtar kelimelerini kullanarak, resmi bir cevap metni oluştur. Cevap metni sadece resmi içeriği kapsamalı, selamlama veya "saygılarımla" gibi kapanış ifadeleri içermemeli. Gelen Yazı: "${alinti}". Cevap için anahtar kelimeler: "${promptText}"`;
+                
+                const response = await fetch(`${API_BASE_URL}/api/AI/GenerateText`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: fullPrompt })
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Yapay zeka servisinden hata alındı: ${errorText}`);
+                }
+
+                const result = await response.json();
+                cevapTextarea.value = result.generatedText;
+
+            } catch (error) {
+                console.error("Yapay Zeka Hatası:", error);
+                alert(`Metin oluşturulurken bir hata oluştu: ${error.message}`);
+            } finally {
+                aiButton.disabled = false;
+                spinner.classList.add('hidden');
+                aiButton.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

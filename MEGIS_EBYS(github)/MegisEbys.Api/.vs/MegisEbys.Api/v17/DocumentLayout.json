@@ -1,0 +1,413 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\MEGIS_EBYS\\MegisEbys.Api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\controllers\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\controllers\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\dtos\\aipromptdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\dtos\\aipromptdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\controllers\\sablonlarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\controllers\\sablonlarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\dtos\\fillsablondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\dtos\\fillsablondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\models\\sablon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\models\\sablon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\models\\evrak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\models\\evrak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\controllers\\evraklarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\controllers\\evraklarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\controllers\\islemgecmisicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\controllers\\islemgecmisicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\models\\islemgecmisi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\models\\islemgecmisi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\controllers\\dosyalarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\controllers\\dosyalarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\documents\\evrakpdfdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\documents\\evrakpdfdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\controllers\\izintaleplericontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\controllers\\izintaleplericontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\models\\izintalebi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\models\\izintalebi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\models\\izindurum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\models\\izindurum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\services\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\services\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\models\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\models\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\migrations\\20250808084133_addizintalebi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\migrations\\20250808084133_addizintalebi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\migrations\\20250810075308_makeevraknonullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\migrations\\20250810075308_makeevraknonullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|d:\\megis_ebys\\megisebys.api\\megisebys.api\\migrations\\20250810063304_addislemgecmisi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{844BCF0D-FD31-4546-8D91-3E8CC2615D7F}|MegisEbys.Api\\MegisEbys.Api.csproj|solutionrelative:megisebys.api\\migrations\\20250810063304_addislemgecmisi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FillSablonDto.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Dtos\\FillSablonDto.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Dtos\\FillSablonDto.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Dtos\\FillSablonDto.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Dtos\\FillSablonDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T10:52:38.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SablonlarController.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\SablonlarController.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Controllers\\SablonlarController.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\SablonlarController.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Controllers\\SablonlarController.cs",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAkwPIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T10:42:37.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Sablon.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\Sablon.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Models\\Sablon.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\Sablon.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Models\\Sablon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T08:44:02.845Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20250810075308_MakeEvrakNoNullable.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Migrations\\20250810075308_MakeEvrakNoNullable.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Migrations\\20250810075308_MakeEvrakNoNullable.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Migrations\\20250810075308_MakeEvrakNoNullable.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Migrations\\20250810075308_MakeEvrakNoNullable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T07:53:08.678Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Evrak.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\Evrak.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Models\\Evrak.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\Evrak.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Models\\Evrak.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAkwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T07:52:35.139Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AIController.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\AIController.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Controllers\\AIController.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\AIController.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Controllers\\AIController.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAkwHMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T06:44:40.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AiPromptDto.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Dtos\\AiPromptDto.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Dtos\\AiPromptDto.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Dtos\\AiPromptDto.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Dtos\\AiPromptDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T06:44:12.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "20250810063304_AddIslemGecmisi.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Migrations\\20250810063304_AddIslemGecmisi.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Migrations\\20250810063304_AddIslemGecmisi.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Migrations\\20250810063304_AddIslemGecmisi.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Migrations\\20250810063304_AddIslemGecmisi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T06:33:05.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IslemGecmisi.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\IslemGecmisi.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Models\\IslemGecmisi.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\IslemGecmisi.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Models\\IslemGecmisi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T06:26:48.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IslemGecmisiController.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\IslemGecmisiController.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Controllers\\IslemGecmisiController.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\IslemGecmisiController.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Controllers\\IslemGecmisiController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAkwCQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T06:25:14.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "EvrakPdfDocument.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Documents\\EvrakPdfDocument.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Documents\\EvrakPdfDocument.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Documents\\EvrakPdfDocument.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Documents\\EvrakPdfDocument.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAwwEUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T09:58:06.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DosyalarController.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\DosyalarController.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Controllers\\DosyalarController.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\DosyalarController.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Controllers\\DosyalarController.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAwwIEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T09:08:20.09Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20250808084133_AddIzinTalebi.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Migrations\\20250808084133_AddIzinTalebi.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Migrations\\20250808084133_AddIzinTalebi.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Migrations\\20250808084133_AddIzinTalebi.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Migrations\\20250808084133_AddIzinTalebi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T08:41:33.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IzinTalepleriController.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\IzinTalepleriController.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Controllers\\IzinTalepleriController.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\IzinTalepleriController.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Controllers\\IzinTalepleriController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAswEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T08:40:51.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T08:40:30.343Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IzinTalebi.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\IzinTalebi.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Models\\IzinTalebi.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\IzinTalebi.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Models\\IzinTalebi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T08:40:01.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IzinDurum.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\IzinDurum.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Models\\IzinDurum.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\IzinDurum.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Models\\IzinDurum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T08:39:26.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Program.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Program.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Program.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T11:12:06.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Services\\EmailService.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Services\\EmailService.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Services\\EmailService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAowCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T11:11:23.096Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Services\\IEmailService.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Services\\IEmailService.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Services\\IEmailService.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Services\\IEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T11:10:46.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "EmailSettings.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\EmailSettings.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Models\\EmailSettings.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Models\\EmailSettings.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Models\\EmailSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T11:08:55.822Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\appsettings.json",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\appsettings.json",
+              "RelativeToolTip": "MegisEbys.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-07T11:07:55.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EvraklarController.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\EvraklarController.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Controllers\\EvraklarController.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\EvraklarController.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Controllers\\EvraklarController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAADwv2gAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:00:20.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "MegisEbys.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\MEGIS_EBYS\\MegisEbys.Api\\MegisEbys.Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "MegisEbys.Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAwwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T16:28:42.464Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

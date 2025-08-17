@@ -1,0 +1,1089 @@
+[
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.AIController",
+    "Method": "GenerateText",
+    "RelativePath": "api/AI/GenerateText",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "promptDto",
+        "Type": "MegisEbys.Api.Dtos.AiPromptDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "MegisEbys.Api.Dtos.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.BirimlerController",
+    "Method": "GetBirimler",
+    "RelativePath": "api/Birimler",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.Models.Birim, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.BirimlerController",
+    "Method": "PostBirim",
+    "RelativePath": "api/Birimler",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "birim",
+        "Type": "MegisEbys.Api.Models.Birim",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.Birim",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.BirimlerController",
+    "Method": "GetBirim",
+    "RelativePath": "api/Birimler/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.Birim",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.BirimlerController",
+    "Method": "PutBirim",
+    "RelativePath": "api/Birimler/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "birim",
+        "Type": "MegisEbys.Api.Models.Birim",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.BirimlerController",
+    "Method": "DeleteBirim",
+    "RelativePath": "api/Birimler/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DisDepartmanlarController",
+    "Method": "GetDisDepartmanlar",
+    "RelativePath": "api/DisDepartmanlar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.Models.DisDepartman, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DisDepartmanlarController",
+    "Method": "PostDisDepartman",
+    "RelativePath": "api/DisDepartmanlar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "disDepartman",
+        "Type": "MegisEbys.Api.Models.DisDepartman",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.DisDepartman",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DisDepartmanlarController",
+    "Method": "PutDisDepartman",
+    "RelativePath": "api/DisDepartmanlar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "disDepartman",
+        "Type": "MegisEbys.Api.Models.DisDepartman",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DisDepartmanlarController",
+    "Method": "DeleteDisDepartman",
+    "RelativePath": "api/DisDepartmanlar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DisDepartmanlarController",
+    "Method": "GetDepartmanlarByKurum",
+    "RelativePath": "api/DisDepartmanlar/kurum/{kurumId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "kurumId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.Models.DisDepartman, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DisKullanicilarController",
+    "Method": "GetDisKullanicilar",
+    "RelativePath": "api/DisKullanicilar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.Models.DisKullanici, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DisKullanicilarController",
+    "Method": "PostDisKullanici",
+    "RelativePath": "api/DisKullanicilar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "disKullanici",
+        "Type": "MegisEbys.Api.Models.DisKullanici",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.DisKullanici",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DisKullanicilarController",
+    "Method": "GetDisKullanici",
+    "RelativePath": "api/DisKullanicilar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.DisKullanici",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DisKullanicilarController",
+    "Method": "PutDisKullanici",
+    "RelativePath": "api/DisKullanicilar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "disKullanici",
+        "Type": "MegisEbys.Api.Models.DisKullanici",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DisKullanicilarController",
+    "Method": "DeleteDisKullanici",
+    "RelativePath": "api/DisKullanicilar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DosyalarController",
+    "Method": "Download",
+    "RelativePath": "api/Dosyalar/download/{evrakId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "evrakId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DosyalarController",
+    "Method": "GenerateAndDownloadPdf",
+    "RelativePath": "api/Dosyalar/generate-pdf/{evrakId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "evrakId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.DosyalarController",
+    "Method": "Upload",
+    "RelativePath": "api/Dosyalar/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.EvraklarController",
+    "Method": "GetEvraklar",
+    "RelativePath": "api/Evraklar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.Models.Evrak, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.EvraklarController",
+    "Method": "PostEvrak",
+    "RelativePath": "api/Evraklar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "evrak",
+        "Type": "MegisEbys.Api.Models.Evrak",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.Evrak",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.EvraklarController",
+    "Method": "GetEvrak",
+    "RelativePath": "api/Evraklar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.Evrak",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.EvraklarController",
+    "Method": "PutEvrak",
+    "RelativePath": "api/Evraklar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "evrakDto",
+        "Type": "MegisEbys.Api.Models.Evrak",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.EvraklarController",
+    "Method": "DeleteEvrak",
+    "RelativePath": "api/Evraklar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.EvrakTurleriController",
+    "Method": "GetEvrakTurleri",
+    "RelativePath": "api/EvrakTurleri",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.Models.EvrakTuru, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.EvrakTurleriController",
+    "Method": "PostEvrakTuru",
+    "RelativePath": "api/EvrakTurleri",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "evrakTuru",
+        "Type": "MegisEbys.Api.Models.EvrakTuru",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.EvrakTuru",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.EvrakTurleriController",
+    "Method": "GetEvrakTuru",
+    "RelativePath": "api/EvrakTurleri/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.EvrakTuru",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.EvrakTurleriController",
+    "Method": "PutEvrakTuru",
+    "RelativePath": "api/EvrakTurleri/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "evrakTuru",
+        "Type": "MegisEbys.Api.Models.EvrakTuru",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.EvrakTurleriController",
+    "Method": "DeleteEvrakTuru",
+    "RelativePath": "api/EvrakTurleri/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.IslemGecmisiController",
+    "Method": "GetGecmisByEvrakId",
+    "RelativePath": "api/IslemGecmisi/evrak/{evrakId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "evrakId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.Models.IslemGecmisi, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.IzinTalepleriController",
+    "Method": "GetIzinTalepleri",
+    "RelativePath": "api/IzinTalepleri",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.Models.IzinTalebi, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.IzinTalepleriController",
+    "Method": "PostIzinTalebi",
+    "RelativePath": "api/IzinTalepleri",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "izinTalebi",
+        "Type": "MegisEbys.Api.Models.IzinTalebi",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.IzinTalebi",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.IzinTalepleriController",
+    "Method": "OnaylaIzin",
+    "RelativePath": "api/IzinTalepleri/{id}/onayla",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.IzinTalepleriController",
+    "Method": "ReddetIzin",
+    "RelativePath": "api/IzinTalepleri/{id}/reddet",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.KullanicilarController",
+    "Method": "GetKullanicilar",
+    "RelativePath": "api/Kullanicilar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.Models.Kullanici, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.KullanicilarController",
+    "Method": "PostKullanici",
+    "RelativePath": "api/Kullanicilar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "kullanici",
+        "Type": "MegisEbys.Api.Models.Kullanici",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.Kullanici",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.KullanicilarController",
+    "Method": "GetKullanici",
+    "RelativePath": "api/Kullanicilar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.Kullanici",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.KullanicilarController",
+    "Method": "PutKullanici",
+    "RelativePath": "api/Kullanicilar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "kullaniciDto",
+        "Type": "MegisEbys.Api.Models.Kullanici",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.KullanicilarController",
+    "Method": "DeleteKullanici",
+    "RelativePath": "api/Kullanicilar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.KurumlarController",
+    "Method": "GetKurumlar",
+    "RelativePath": "api/Kurumlar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.Models.Kurum, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.KurumlarController",
+    "Method": "PostKurum",
+    "RelativePath": "api/Kurumlar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "kurum",
+        "Type": "MegisEbys.Api.Models.Kurum",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.Kurum",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.KurumlarController",
+    "Method": "GetKurum",
+    "RelativePath": "api/Kurumlar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MegisEbys.Api.Models.Kurum",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.KurumlarController",
+    "Method": "PutKurum",
+    "RelativePath": "api/Kurumlar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "kurum",
+        "Type": "MegisEbys.Api.Models.Kurum",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.KurumlarController",
+    "Method": "DeleteKurum",
+    "RelativePath": "api/Kurumlar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.SablonlarController",
+    "Method": "GetSablonlar",
+    "RelativePath": "api/Sablonlar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.Models.Sablon, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.SablonlarController",
+    "Method": "DeleteSablon",
+    "RelativePath": "api/Sablonlar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.SablonlarController",
+    "Method": "Download",
+    "RelativePath": "api/Sablonlar/download/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.SablonlarController",
+    "Method": "FillTemplate",
+    "RelativePath": "api/Sablonlar/fill/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "MegisEbys.Api.Dtos.FillSablonDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.SablonlarController",
+    "Method": "GetTemplateText",
+    "RelativePath": "api/Sablonlar/get-text/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.SablonlarController",
+    "Method": "GetTemplatePlaceholders",
+    "RelativePath": "api/Sablonlar/placeholders/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.SablonlarController",
+    "Method": "Upload",
+    "RelativePath": "api/Sablonlar/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MegisEbys.Api.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MegisEbys.Api.WeatherForecast, MegisEbys.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

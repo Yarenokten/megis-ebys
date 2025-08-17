@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGİS - İzin Yönetimi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; }
+        .sidebar { transition: transform 0.3s ease-in-out; }
+        .content { transition: margin-left 0.3s ease-in-out; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+        .tab-active { border-color: #3b82f6; color: #3b82f6; background-color: #eff6ff; }
+        .modal-overlay { transition: opacity 0.3s ease-in-out; }
+        .modal-container { transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Kenar Çubuğu (Sidebar) -->
+    <aside id="sidebar" class="sidebar bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 z-30">
+        <a href="anasayfa.html" class="text-white flex items-center space-x-2 px-4">
+            <i data-lucide="file-archive-2" class="w-8 h-8"></i>
+            <span class="text-2xl font-extrabold">MEGİS EBYS</span>
+        </a>
+        <nav>
+            <a href="anasayfa.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="layout-dashboard"></i><span>Anasayfa</span></a>
+            <a href="izin-yonetimi.html" class="flex items-center space-x-3 bg-gray-900 text-white py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="calendar-check"></i><span>İzin Yönetimi</span></a>
+            <a href="gelen-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="inbox"></i><span>Gelen Evrak</span></a>
+            <a href="giden-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="send"></i><span>Giden Evrak</span></a>
+            <a href="arsiv.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="archive"></i><span>Arşiv</span></a>
+            <a id="link-kullanici-yonetimi" href="kullanici-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="users"></i><span>Kullanıcı Yönetimi</span></a>
+            <a id="link-kurum-yonetimi" href="kurum-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="building-2"></i><span>Kurum Yönetimi</span></a>
+            <a id="link-ayarlar" href="ayarlar.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="settings"></i><span>Ayarlar</span></a>
+        </nav>
+        <div class="absolute bottom-5 left-0 right-0 px-4">
+             <div class="bg-gray-700 p-3 rounded-lg">
+                <div class="flex items-center space-x-3">
+                    <img src="https://placehold.co/40x40/667eea/ffffff?text=A" class="rounded-full" alt="Kullanıcı Avatarı">
+                    <div>
+                        <p class="font-semibold text-sm">Ali Yılmaz</p>
+                        <span class="text-xs text-gray-400">Admin</span>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </aside>
+
+    <!-- Ana İçerik -->
+    <div class="content flex-1 flex flex-col overflow-hidden">
+        <header class="flex justify-between items-center p-4 bg-white border-b">
+            <div class="flex items-center">
+                <button id="menu-button" class="text-gray-500 focus:outline-none md:hidden"><i data-lucide="menu" class="w-6 h-6"></i></button>
+                <h1 class="text-2xl font-semibold text-gray-800 ml-4">İzin Yönetimi</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button id="notification-button" class="relative text-gray-500 hover:text-gray-700">
+                        <i data-lucide="bell"></i>
+                        <span id="notification-badge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </button>
+                    <div id="notification-dropdown" class="absolute right-0 mt-2 w-80 bg-white rounded-md shadow-lg z-20 hidden">
+                        <div class="p-4 font-bold border-b">Bildirimler</div>
+                        <div id="notification-list" class="py-1 max-h-80 overflow-y-auto">
+                            <!-- Bildirimler buraya yüklenecek -->
+                        </div>
+                    </div>
+                </div>
+                <button class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-f0f2f5 p-6">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <button class="tab-button tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="izinlerim">İzin Taleplerim</button>
+                        <button id="onay-tab-button" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="onay-bekleyenler">Onay Bekleyenler</button>
+                    </nav>
+                </div>
+
+                <div class="pt-6">
+                    <!-- İzin Taleplerim Sekmesi -->
+                    <div id="izinlerim" class="tab-content">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-700">Oluşturduğum İzin Talepleri</h3>
+                            <button id="yeni-izin-btn" class="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition"><i data-lucide="plus"></i><span>Yeni İzin Talebi</span></button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-500">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3">Başlangıç</th>
+                                        <th class="px-6 py-3">Bitiş</th>
+                                        <th class="px-6 py-3">Açıklama</th>
+                                        <th class="px-6 py-3">Durum</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="izinlerim-listesi"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Onay Bekleyenler Sekmesi -->
+                    <div id="onay-bekleyenler" class="tab-content hidden">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-4">Onay Bekleyen İzin Talepleri</h3>
+                        <div class="overflow-x-auto">
+                           <table class="w-full text-sm text-left text-gray-500">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3">Talep Eden</th>
+                                        <th class="px-6 py-3">Başlangıç</th>
+                                        <th class="px-6 py-3">Bitiş</th>
+                                        <th class="px-6 py-3">Açıklama</th>
+                                        <th class="px-6 py-3 text-center">İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="onay-bekleyenler-listesi"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Yeni İzin Talebi Modalı -->
+    <div id="izin-modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-40 hidden opacity-0">
+        <div class="modal-container bg-white rounded-xl shadow-2xl w-full max-w-lg transform -translate-y-10 opacity-0">
+            <div class="flex justify-between items-center p-5 border-b">
+                <h3 class="text-xl font-semibold text-gray-800">Yeni İzin Talebi Oluştur</h3>
+                <button id="close-izin-modal-button" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <form id="izin-form">
+                <div class="p-6 space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="baslangic-tarihi" class="block text-sm font-medium text-gray-700 mb-1">Başlangıç Tarihi</label>
+                            <input type="date" id="baslangic-tarihi" class="w-full border-gray-300 rounded-lg shadow-sm" required>
+                        </div>
+                        <div>
+                            <label for="bitis-tarihi" class="block text-sm font-medium text-gray-700 mb-1">Bitiş Tarihi</label>
+                            <input type="date" id="bitis-tarihi" class="w-full border-gray-300 rounded-lg shadow-sm" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="aciklama" class="block text-sm font-medium text-gray-700 mb-1">Açıklama</label>
+                        <textarea id="aciklama" rows="4" class="w-full border-gray-300 rounded-lg shadow-sm" required></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-end items-center p-5 border-t bg-gray-50 rounded-b-xl">
+                    <button type="button" id="cancel-izin-button" class="bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 mr-2">Vazgeç</button>
+                    <button type="submit" class="bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-700">Talep Oluştur</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        const API_BASE_URL = "https://localhost:7281";
+        const currentUser = JSON.parse(localStorage.getItem('kullanici'));
+        const durumMap = { 0: "Onay Bekliyor", 1: "Onaylandı", 2: "Reddedildi" };
+        const durumRenkMap = { 0: "yellow", 1: "green", 2: "red" };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            setupTabs();
+            loadIzinTalepleri();
+            setupEventListeners();
+            applyIzinPermissions();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('menu-button').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('-translate-x-full'));
+            
+            const modal = document.getElementById('izin-modal');
+            const modalContainer = modal.querySelector('.modal-container');
+            document.getElementById('yeni-izin-btn').addEventListener('click', () => openModal(modal, modalContainer));
+            document.getElementById('close-izin-modal-button').addEventListener('click', () => closeModal(modal, modalContainer));
+            document.getElementById('cancel-izin-button').addEventListener('click', () => closeModal(modal, modalContainer));
+            document.getElementById('izin-form').addEventListener('submit', handleIzinFormSubmit);
+        }
+
+        function applyIzinPermissions() {
+            // Yetki: 0=Memur, 1=Şef, 2=Admin/Müdür
+            if (currentUser && currentUser.yetki === 0) { // Eğer Memur ise
+                document.getElementById('onay-tab-button').style.display = 'none';
+            }
+        }
+
+        async function loadIzinTalepleri() {
+            if (!currentUser) return;
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/IzinTalepleri`);
+                if (!res.ok) throw new Error('İzin talepleri yüklenemedi.');
+                const talepler = await res.json();
+
+                const benimTaleplerim = talepler.filter(t => t.talepEdenKullaniciId === currentUser.id);
+                renderTable('izinlerim-listesi', benimTaleplerim, false);
+
+                if (currentUser.yetki > 0) { // Şef veya Müdür ise
+                    // Memurların (yetki=0) ve Şeflerin (yetki=1) taleplerini onaya getir (Müdür için)
+                    // Sadece Memurların (yetki=0) taleplerini onaya getir (Şef için)
+                    const onayBekleyenler = talepler.filter(t => t.talepEdenKullanici.yetki < currentUser.yetki && t.durum === 0);
+                    renderTable('onay-bekleyenler-listesi', onayBekleyenler, true);
+                }
+            } catch (e) {
+                alert(`Hata: ${e.message}`);
+            }
+        }
+
+        function renderTable(tbodyId, data, isOnay) {
+            const tableBody = document.getElementById(tbodyId);
+            tableBody.innerHTML = '';
+            if (data.length === 0) {
+                const colSpan = isOnay ? 5 : 4;
+                tableBody.innerHTML = `<tr><td colspan="${colSpan}" class="text-center p-4 text-gray-500">Gösterilecek talep bulunmamaktadır.</td></tr>`;
+                return;
+            }
+
+            data.forEach(t => {
+                const row = tableBody.insertRow();
+                const baslangic = new Date(t.baslangicTarihi).toLocaleDateString('tr-TR');
+                const bitis = new Date(t.bitisTarihi).toLocaleDateString('tr-TR');
+                
+                let cells = '';
+                if (isOnay) {
+                    cells = `
+                        <td class="px-6 py-4">${t.talepEdenKullanici.adSoyad}</td>
+                        <td class="px-6 py-4">${baslangic}</td>
+                        <td class="px-6 py-4">${bitis}</td>
+                        <td class="px-6 py-4">${t.aciklama}</td>
+                        <td class="px-6 py-4 text-center space-x-2">
+                            <button onclick="handleOnay(${t.id}, true)" class="text-green-600 hover:text-green-800 p-1"><i data-lucide="check-circle"></i></button>
+                            <button onclick="handleOnay(${t.id}, false)" class="text-red-600 hover:text-red-800 p-1"><i data-lucide="x-circle"></i></button>
+                        </td>
+                    `;
+                } else {
+                    cells = `
+                        <td class="px-6 py-4">${baslangic}</td>
+                        <td class="px-6 py-4">${bitis}</td>
+                        <td class="px-6 py-4">${t.aciklama}</td>
+                        <td class="px-6 py-4"><span class="bg-${durumRenkMap[t.durum]}-100 text-${durumRenkMap[t.durum]}-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${durumMap[t.durum]}</span></td>
+                    `;
+                }
+                row.innerHTML = cells;
+            });
+            lucide.createIcons();
+        }
+
+        async function handleIzinFormSubmit(event) {
+            event.preventDefault();
+            const talep = {
+                baslangicTarihi: document.getElementById('baslangic-tarihi').value,
+                bitisTarihi: document.getElementById('bitis-tarihi').value,
+                aciklama: document.getElementById('aciklama').value,
+                talepEdenKullaniciId: currentUser.id
+            };
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/IzinTalepleri`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(talep)
+                });
+                if (!res.ok) throw new Error('Talep oluşturulamadı.');
+                loadIzinTalepleri();
+                const modal = document.getElementById('izin-modal');
+                closeModal(modal, modal.querySelector('.modal-container'));
+            } catch (e) { alert(`Hata: ${e.message}`); }
+        }
+
+        async function handleOnay(talepId, onaylandiMi) {
+            const action = onaylandiMi ? 'onayla' : 'reddet';
+            if (confirm(`Bu izin talebini ${onaylandiMi ? 'ONAYLAMAK' : 'REDDETMEK'} istediğinizden emin misiniz?`)) {
+                try {
+                    const res = await fetch(`${API_BASE_URL}/api/IzinTalepleri/${talepId}/${action}`, { method: 'PUT' });
+                    if (!res.ok) throw new Error('İşlem gerçekleştirilemedi.');
+                    loadIzinTalepleri();
+                } catch (e) { alert(`Hata: ${e.message}`); }
+            }
+        }
+
+        function setupTabs() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('tab-active'));
+                    button.classList.add('tab-active');
+                    const targetTab = button.dataset.tab;
+                    tabContents.forEach(content => {
+                        content.classList.toggle('hidden', content.id !== targetTab);
+                    });
+                });
+            });
+        }
+        function openModal(modal, container) {
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('opacity-0', '-translate-y-10');
+            }, 10);
+        }
+        function closeModal(modal, container) {
+            container.classList.add('opacity-0', '-translate-y-10');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+    </script>
+</body>
+</html>

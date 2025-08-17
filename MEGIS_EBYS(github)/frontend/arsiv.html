@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGİS - Arşiv</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        .content {
+            transition: margin-left 0.3s ease-in-out;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Kenar Çubuğu (Sidebar) -->
+    <aside id="sidebar" class="sidebar bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 z-30">
+        <a href="anasayfa.html" class="text-white flex items-center space-x-2 px-4">
+            <i data-lucide="file-archive-2" class="w-8 h-8"></i>
+            <span class="text-2xl font-extrabold">MEGİS EBYS</span>
+        </a>
+        <nav>
+            <a href="anasayfa.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="layout-dashboard"></i><span>Anasayfa</span></a>
+            <a href="izin-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="calendar-check"></i><span>İzin Yönetimi</span></a>
+           
+            <a href="gelen-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="inbox"></i><span>Gelen Evrak</span></a>
+            <a href="giden-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="send"></i><span>Giden Evrak</span></a>
+            <a href="arsiv.html" class="flex items-center space-x-3 bg-gray-900 text-white py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="archive"></i><span>Arşiv</span></a>
+            <a id="link-kullanici-yonetimi" href="kullanici-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="users"></i><span>Kullanıcı Yönetimi</span></a>
+            <a id="link-kurum-yonetimi" href="kurum-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="building-2"></i><span>Kurum Yönetimi</span></a>
+            
+            <a id="link-ayarlar" href="ayarlar.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="settings"></i><span>Ayarlar</span></a>
+        </nav>
+        <div class="absolute bottom-5 left-0 right-0 px-4">
+             <div class="bg-gray-700 p-3 rounded-lg">
+                <div class="flex items-center space-x-3">
+                    <img src="https://placehold.co/40x40/667eea/ffffff?text=A" class="rounded-full" alt="Kullanıcı Avatarı">
+                    <div>
+                        <p class="font-semibold text-sm">Ali Yılmaz</p>
+                        <span class="text-xs text-gray-400">Admin</span>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </aside>
+
+    <!-- Ana İçerik -->
+    <div class="content flex-1 flex flex-col overflow-hidden">
+        <!-- Üst Bar -->
+        <header class="flex justify-between items-center p-4 bg-white border-b">
+            <div class="flex items-center">
+                <button id="menu-button" class="text-gray-500 focus:outline-none md:hidden">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <h1 class="text-2xl font-semibold text-gray-800 ml-4">Arşiv</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="relative text-gray-500 hover:text-gray-700">
+                    <i data-lucide="bell"></i>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">3</span>
+                </button>
+                <button class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- İçerik Alanı -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-f0f2f5 p-6">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <!-- Gelişmiş Filtreleme Paneli -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg border">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-4">Detaylı Arama</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <input type="text" placeholder="Anahtar kelime, evrak no..." class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <select class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option>Tüm Yönler (Gelen/Giden)</option>
+                            <option>Gelen Evrak</option>
+                            <option>Giden Evrak</option>
+                        </select>
+                        <input type="date" placeholder="Başlangıç Tarihi" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500">
+                    
+                        <button class="flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+                            <i data-lucide="search" class="w-5 h-5"></i>
+                            <span>Ara</span>
+                        </button>
+                    
+                    </div>
+
+                    
+                </div>
+
+                <!-- Arşiv Listesi Tablosu -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-gray-500">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Yön</th>
+                                <th scope="col" class="px-6 py-3">Evrak No</th>
+                                <th scope="col" class="px-6 py-3">Konu</th>
+                                <th scope="col" class="px-6 py-3">İlgili Kurum</th>
+                                <th scope="col" class="px-6 py-3">Arşiv Tarihi</th>
+                                <th scope="col" class="px-6 py-3 text-center">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="arsiv-listesi-body">
+                            <!-- Arşivlenmiş evraklar buraya yüklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="auth.js"></script>
+    <script>
+        const API_BASE_URL = "https://localhost:7281"; // Port numarasını kendinize göre değiştirin!
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            loadArsiv();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            const menuButton = document.getElementById('menu-button');
+            const sidebar = document.getElementById('sidebar');
+            menuButton.addEventListener('click', () => sidebar.classList.toggle('-translate-x-full'));
+        }
+
+        async function loadArsiv() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/Evraklar`);
+                if (!response.ok) throw new Error('Arşiv yüklenemedi.');
+                const evraklar = await response.json();
+                const tableBody = document.getElementById('arsiv-listesi-body');
+                tableBody.innerHTML = '';
+
+                // Sadece durumu 4 (Arsivlendi) olan evrakları filtrele
+                evraklar.filter(e => e.durum === 4).forEach(evrak => {
+                    const row = tableBody.insertRow();
+                    row.className = 'bg-white border-b hover:bg-gray-50';
+                    const tarih = new Date(evrak.tarih).toLocaleDateString('tr-TR');
+                    
+                    const yonIcon = evrak.yonu === 0 
+                        ? `<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600" title="Gelen Evrak"><i data-lucide="arrow-down-left"></i></span>`
+                        : `<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-600" title="Giden Evrak"><i data-lucide="arrow-up-right"></i></span>`;
+
+                    row.innerHTML = `
+                        <td class="px-6 py-4">${yonIcon}</td>
+                        <td class="px-6 py-4 font-medium text-gray-900">${evrak.evrakNo}</td>
+                        <td class="px-6 py-4">${evrak.konu}</td>
+                        <td class="px-6 py-4">${evrak.ilgiliKurum}</td>
+                        <td class="px-6 py-4">${tarih}</td>
+                        <td class="px-6 py-4 text-center">
+                            <a href="evrak-detay.html?id=${evrak.id}" class="text-gray-500 hover:text-blue-600 p-1 inline-block" title="Detayı Görüntüle"><i data-lucide="eye"></i></a>
+                            <button class="text-gray-500 hover:text-green-600 p-1" title="İndir"><i data-lucide="download"></i></button>
+                        </td>
+                    `;
+                });
+                lucide.createIcons();
+            } catch (error) {
+                console.error('Arşiv Yükleme Hatası:', error);
+                alert('Arşiv yüklenirken bir hata oluştu.');
+            }
+        }
+    </script>
+</body>
+</html>

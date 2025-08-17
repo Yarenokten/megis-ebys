@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGİS - Gelen Evrak</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        .content {
+            transition: margin-left 0.3s ease-in-out;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .tab-active {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            background-color: #eff6ff;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Kenar Çubuğu (Sidebar) -->
+    <aside id="sidebar" class="sidebar bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 z-30">
+        <a href="anasayfa.html" class="text-white flex items-center space-x-2 px-4">
+            <i data-lucide="file-archive-2" class="w-8 h-8"></i>
+            <span class="text-2xl font-extrabold">MEGİS EBYS</span>
+        </a>
+        <nav>
+            <a href="anasayfa.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="layout-dashboard"></i><span>Anasayfa</span></a>
+            <a href="izin-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="calendar-check"></i><span>İzin Yönetimi</span></a>
+            <a href="gelen-evrak.html" class="flex items-center space-x-3 bg-gray-900 text-white py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="inbox"></i><span>Gelen Evrak</span></a>
+            <a href="giden-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="send"></i><span>Giden Evrak</span></a>
+            <a href="arsiv.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="archive"></i><span>Arşiv</span></a>
+            <a id="link-kullanici-yonetimi" href="kullanici-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="users"></i><span>Kullanıcı Yönetimi</span></a>
+            <a id="link-kurum-yonetimi" href="kurum-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="building-2"></i><span>Kurum Yönetimi</span></a>
+            <a id="link-ayarlar" href="ayarlar.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="settings"></i><span>Ayarlar</span></a>
+        </nav>
+        <div class="absolute bottom-5 left-0 right-0 px-4">
+             <div class="bg-gray-700 p-3 rounded-lg">
+                <div class="flex items-center space-x-3">
+                    <img src="https://placehold.co/40x40/667eea/ffffff?text=A" class="rounded-full" alt="Kullanıcı Avatarı">
+                    <div>
+                        <p class="font-semibold text-sm">Ali Yılmaz</p>
+                        <span class="text-xs text-gray-400">Admin</span>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </aside>
+
+    <!-- Ana İçerik -->
+    <div class="content flex-1 flex flex-col overflow-hidden">
+        <!-- Üst Bar -->
+        <header class="flex justify-between items-center p-4 bg-white border-b">
+            <div class="flex items-center">
+                <button id="menu-button" class="text-gray-500 focus:outline-none md:hidden">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <h1 class="text-2xl font-semibold text-gray-800 ml-4">Gelen Kutusu</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button id="notification-button" class="relative text-gray-500 hover:text-gray-700">
+                        <i data-lucide="bell"></i>
+                        <span id="notification-badge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </button>
+                    <div id="notification-dropdown" class="absolute right-0 mt-2 w-80 bg-white rounded-md shadow-lg z-20 hidden">
+                        <div class="p-4 font-bold border-b">Bildirimler</div>
+                        <div id="notification-list" class="py-1 max-h-80 overflow-y-auto">
+                            <!-- Bildirimler buraya yüklenecek -->
+                        </div>
+                    </div>
+                </div>
+                <button class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- İçerik Alanı -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-f0f2f5 p-6">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
+                    <div class="relative w-full">
+                        <input type="text" id="arama-input" placeholder="Evrak no, konu veya gönderen ara..." class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Sekme Başlıkları -->
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <button class="tab-button tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="kurum-ici">Kurum İçi Gelen</button>
+                        <button class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="kurum-disi">Kurum Dışı Gelen</button>
+                    </nav>
+                </div>
+
+                <!-- Kurum İçi Gelen Evraklar -->
+                <div id="kurum-ici" class="tab-content pt-4">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">Evrak No</th>
+                                    <th scope="col" class="px-6 py-3">Konu</th>
+                                    <th scope="col" class="px-6 py-3">Gönderen Personel</th>
+                                    <th scope="col" class="px-6 py-3">Geliş Tarihi</th>
+                                    <th scope="col" class="px-6 py-3">Durum</th>
+                                    <th scope="col" class="px-6 py-3 text-center">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="kurum-ici-evrak-listesi-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Kurum Dışı Gelen Evraklar -->
+                <div id="kurum-disi" class="tab-content pt-4 hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">Evrak No</th>
+                                    <th scope="col" class="px-6 py-3">Konu</th>
+                                    <th scope="col" class="px-6 py-3">Gönderen Kurum</th>
+                                    <th scope="col" class="px-6 py-3">Geliş Tarihi</th>
+                                    <th scope="col" class="px-6 py-3">Durum</th>
+                                    <th scope="col" class="px-6 py-3 text-center">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="kurum-disi-evrak-listesi-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="auth.js"></script>
+    <script>
+        const API_BASE_URL = "https://localhost:7281";
+        const durumMap = { 0: "Cevap Bekliyor", 1: "İşlemde", 2: "Cevaplandı", 3: "Gecikti", 4: "Arşivlendi", 6: "Yeni Geldi" };
+        const durumRenkMap = { 0: "blue", 1: "yellow", 2: "green", 3: "red", 4: "gray", 6: "blue" };
+        const currentUser = JSON.parse(localStorage.getItem('kullanici'));
+        let tumEvraklar = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            fetchAndRenderEvraklar();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('menu-button').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('-translate-x-full'));
+            document.getElementById('arama-input').addEventListener('input', (e) => renderEvraklar(e.target.value.toLowerCase()));
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('tab-active'));
+                    button.classList.add('tab-active');
+                    const targetTab = button.dataset.tab;
+                    tabContents.forEach(content => content.classList.toggle('hidden', content.id !== targetTab));
+                });
+            });
+        }
+
+        async function fetchAndRenderEvraklar() {
+            if (!currentUser) return;
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/Evraklar`);
+                if (!response.ok) throw new Error('Evraklar yüklenemedi.');
+                tumEvraklar = await response.json();
+                renderEvraklar();
+            } catch (error) {
+                console.error('Evrak Yükleme Hatası:', error);
+                alert('Evraklar yüklenirken bir hata oluştu.');
+            }
+        }
+        
+        function renderEvraklar(searchTerm = '') {
+            let filtrelenmisEvraklar = tumEvraklar;
+
+            if (searchTerm) {
+                filtrelenmisEvraklar = tumEvraklar.filter(evrak => {
+                    const gonderen = evrak.dahiliMi 
+                        ? (evrak.gonderenKullanici ? evrak.gonderenKullanici.adSoyad.toLowerCase() : '')
+                        : (evrak.ilgiliKurum ? evrak.ilgiliKurum.toLowerCase() : '');
+                    
+                    return evrak.evrakNo.toLowerCase().includes(searchTerm) ||
+                           evrak.konu.toLowerCase().includes(searchTerm) ||
+                           gonderen.includes(searchTerm);
+                });
+            }
+
+            // Kurum İçi Gelen
+            const kurumIciBody = document.getElementById('kurum-ici-evrak-listesi-body');
+            kurumIciBody.innerHTML = '';
+            const kurumIciEvraklar = filtrelenmisEvraklar.filter(e => e.dahiliMi && (e.aliciKullaniciId === currentUser.id || e.aliciBirimId === currentUser.birimId));
+            
+            kurumIciEvraklar.forEach(evrak => {
+                const row = kurumIciBody.insertRow();
+                row.className = 'bg-white border-b hover:bg-gray-50';
+                const tarih = new Date(evrak.tarih).toLocaleDateString('tr-TR');
+                const gonderen = evrak.gonderenKullanici ? evrak.gonderenKullanici.adSoyad : 'Bilinmiyor';
+                const downloadButton = `<button onclick="handleDownload(${evrak.id}, '${evrak.dosyaYolu || ''}')" class="text-gray-500 hover:text-green-600 p-1 inline-block" title="İndir"><i data-lucide="download"></i></button>`;
+
+                row.innerHTML = `
+                    <td class="px-6 py-4 font-medium text-gray-900">${evrak.evrakNo}</td>
+                    <td class="px-6 py-4">${evrak.konu}</td>
+                    <td class="px-6 py-4">${gonderen}</td>
+                    <td class="px-6 py-4">${tarih}</td>
+                    <td class="px-6 py-4"><span class="bg-${durumRenkMap[evrak.durum]}-100 text-${durumRenkMap[evrak.durum]}-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${durumMap[evrak.durum] || 'Bilinmiyor'}</span></td>
+                    <td class="px-6 py-4 text-center space-x-2">
+                        <a href="evrak-detay.html?id=${evrak.id}" class="text-gray-500 hover:text-blue-600 p-1 inline-block" title="Detayı Görüntüle"><i data-lucide="eye"></i></a>
+                        ${downloadButton}
+                    </td>`;
+            });
+
+            // Kurum Dışı Gelen
+            const kurumDisiBody = document.getElementById('kurum-disi-evrak-listesi-body');
+            kurumDisiBody.innerHTML = '';
+            const kurumDisiEvraklar = filtrelenmisEvraklar.filter(e => !e.dahiliMi && e.yonu === 0);
+
+            kurumDisiEvraklar.forEach(evrak => {
+                const row = kurumDisiBody.insertRow();
+                row.className = 'bg-white border-b hover:bg-gray-50';
+                const tarih = new Date(evrak.tarih).toLocaleDateString('tr-TR');
+                const downloadButton = `<button onclick="handleDownload(${evrak.id}, '${evrak.dosyaYolu || ''}')" class="text-gray-500 hover:text-green-600 p-1 inline-block" title="İndir"><i data-lucide="download"></i></button>`;
+
+                row.innerHTML = `
+                    <td class="px-6 py-4 font-medium text-gray-900">${evrak.evrakNo}</td>
+                    <td class="px-6 py-4">${evrak.konu}</td>
+                    <td class="px-6 py-4">${evrak.ilgiliKurum}</td>
+                    <td class="px-6 py-4">${tarih}</td>
+                    <td class="px-6 py-4"><span class="bg-${durumRenkMap[evrak.durum]}-100 text-${durumRenkMap[evrak.durum]}-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${durumMap[evrak.durum] || 'Bilinmiyor'}</span></td>
+                    <td class="px-6 py-4 text-center space-x-2">
+                        <a href="evrak-detay.html?id=${evrak.id}" class="text-gray-500 hover:text-blue-600 p-1 inline-block" title="Detayı Görüntüle"><i data-lucide="eye"></i></a>
+                        ${downloadButton}
+                    </td>`;
+            });
+
+            lucide.createIcons();
+        }
+
+        function handleDownload(evrakId, dosyaYolu) {
+            if (dosyaYolu) {
+                // Eğer bir ek varsa, eki indir.
+                window.location.href = `${API_BASE_URL}/api/Dosyalar/download/${evrakId}`;
+            } else {
+                // Eğer ek yoksa, yazının kendisini PDF olarak indir.
+                window.location.href = `${API_BASE_URL}/api/Dosyalar/generate-pdf/${evrakId}`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGİS - Şablon Yönetimi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; }
+        .sidebar { transition: transform 0.3s ease-in-out; }
+        .content { transition: margin-left 0.3s ease-in-out; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Kenar Çubuğu (Sidebar) -->
+    <aside id="sidebar" class="sidebar bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 z-30">
+        <a href="anasayfa.html" class="text-white flex items-center space-x-2 px-4">
+            <i data-lucide="file-archive-2" class="w-8 h-8"></i>
+            <span class="text-2xl font-extrabold">MEGİS EBYS</span>
+        </a>
+        <nav>
+            <a href="anasayfa.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="layout-dashboard"></i><span>Anasayfa</span></a>
+            <a href="izin-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="calendar-check"></i><span>İzin Yönetimi</span></a>
+            <a href="gelen-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="inbox"></i><span>Gelen Evrak</span></a>
+            <a href="giden-evrak.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="send"></i><span>Giden Evrak</span></a>
+            <a href="arsiv.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="archive"></i><span>Arşiv</span></a>
+            <a id="link-kullanici-yonetimi" href="kullanici-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="users"></i><span>Kullanıcı Yönetimi</span></a>
+            <a id="link-kurum-yonetimi" href="kurum-yonetimi.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="building-2"></i><span>Kurum Yönetimi</span></a>
+            <a id="link-sablon-yonetimi" href="sablon-yonetimi.html" class="flex items-center space-x-3 bg-gray-900 text-white py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="file-text"></i><span>Şablon Yönetimi</span></a>
+            <a id="link-ayarlar" href="ayarlar.html" class="flex items-center space-x-3 hover:bg-gray-700 py-2.5 px-4 rounded-md transition duration-200"><i data-lucide="settings"></i><span>Ayarlar</span></a>
+        </nav>
+    </aside>
+
+    <!-- Ana İçerik -->
+    <div class="content flex-1 flex flex-col overflow-hidden">
+        <header class="flex justify-between items-center p-4 bg-white border-b">
+            <div class="flex items-center">
+                <button id="menu-button" class="text-gray-500 focus:outline-none md:hidden"><i data-lucide="menu" class="w-6 h-6"></i></button>
+                <h1 class="text-2xl font-semibold text-gray-800 ml-4">Şablon Yönetimi</h1>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-f0f2f5 p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Yeni Şablon Yükleme Formu -->
+                <div class="lg:col-span-1">
+                    <form id="sablon-form" class="bg-white p-6 rounded-xl shadow-md space-y-4">
+                        <h3 class="text-lg font-semibold text-gray-700">Yeni Şablon Yükle</h3>
+                        <div>
+                            <label for="sablon-adi" class="block text-sm font-medium text-gray-700 mb-1">Şablon Adı</label>
+                            <input type="text" id="sablon-adi" class="w-full border-gray-300 rounded-lg shadow-sm" required>
+                        </div>
+                        <div>
+                            <label for="sablon-dosya" class="block text-sm font-medium text-gray-700 mb-1">Şablon Dosyası (.docx)</label>
+                            <input type="file" id="sablon-dosya" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" accept=".docx" required>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition">Yükle</button>
+                    </form>
+                </div>
+
+                <!-- Mevcut Şablonlar Listesi -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-4">Kayıtlı Şablonlar</h3>
+                        <ul id="sablon-listesi" class="space-y-2">
+                            <!-- Şablonlar buraya yüklenecek -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        const API_BASE_URL = "https://localhost:7281";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            loadSablonlar();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('menu-button').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('-translate-x-full'));
+            document.getElementById('sablon-form').addEventListener('submit', handleSablonUpload);
+        }
+
+        async function loadSablonlar() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/Sablonlar`);
+                if (!response.ok) throw new Error('Şablonlar yüklenemedi.');
+                const sablonlar = await response.json();
+                const liste = document.getElementById('sablon-listesi');
+                liste.innerHTML = '';
+
+                if (sablonlar.length === 0) {
+                    liste.innerHTML = `<p class="text-gray-500">Kayıtlı şablon bulunmamaktadır.</p>`;
+                    return;
+                }
+
+                sablonlar.forEach(sablon => {
+                    const li = document.createElement('li');
+                    li.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-lg';
+                    li.innerHTML = `
+                        <span class="font-medium flex items-center gap-2"><i data-lucide="file-word" class="w-5 h-5 text-blue-600"></i>${sablon.ad}</span>
+                        <div class="space-x-2">
+                            <a href="${API_BASE_URL}/api/Sablonlar/download/${sablon.id}" class="text-gray-500 hover:text-green-600 p-1" title="İndir"><i data-lucide="download"></i></a>
+                            <button onclick="deleteSablon(${sablon.id})" class="text-gray-500 hover:text-red-600 p-1" title="Sil"><i data-lucide="trash-2"></i></button>
+                        </div>
+                    `;
+                    liste.appendChild(li);
+                });
+                lucide.createIcons();
+            } catch (error) {
+                alert(`Hata: ${error.message}`);
+            }
+        }
+
+        async function handleSablonUpload(event) {
+            event.preventDefault();
+            const adInput = document.getElementById('sablon-adi');
+            const fileInput = document.getElementById('sablon-dosya');
+            
+            if (fileInput.files.length === 0) {
+                alert("Lütfen bir dosya seçin.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('ad', adInput.value);
+            formData.append('file', fileInput.files[0]);
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/Sablonlar/upload`, {
+                    method: 'POST',
+                    body: formData,
+                });
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Şablon yüklenemedi: ${errorText}`);
+                }
+                alert("Şablon başarıyla yüklendi!");
+                adInput.value = '';
+                fileInput.value = '';
+                loadSablonlar();
+            } catch (error) {
+                alert(`Hata: ${error.message}`);
+            }
+        }
+
+        async function deleteSablon(id) {
+            if (confirm("Bu şablonu silmek istediğinizden emin misiniz?")) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/Sablonlar/${id}`, { method: 'DELETE' });
+                    if (!response.ok) throw new Error('Şablon silinemedi.');
+                    loadSablonlar();
+                } catch (error) {
+                    alert(`Hata: ${error.message}`);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
